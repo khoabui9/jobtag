@@ -1,0 +1,35 @@
+<template name="timeline">
+  {{#if timeline.current}}
+  <div class="col-md-12">
+    <div class="timeline-header">
+      <div class="timeline-panel">
+        <div class="timeline-heading">
+          <h4 class="timeline-title">{{timeline.current.question}}</h4>
+        </div>
+        {{#if timeline.current.answers}}
+        <div class="timeline-body text-right">
+          {{#each timeline.current.answers}}
+          <a href="#" id="{{id}}" class="{{class}}">{{name}}</a>
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+    </div>
+    <ul class="timeline">
+      {{#each timeline.steps}}
+      <li class="{{#if even}}timeline-inverted{{/if}}">
+        <div class="timeline-badge {{status}}"><i class="fa fa-{{badgeIcon}}"></i></div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title"><i class="fa fa-{{titleIcon}}"></i>{{name}}</h4>
+          </div>
+          <div class="timeline-body text-right">
+            <div class="date"><i class="fa fa-clock-o"></i>{{formatDateTime date}}</div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+</template>

@@ -1,0 +1,169 @@
+/**
+* Main stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+// General
+body {
+  color: @main-blue;
+}
+body.applayout {
+  background-color: @main-white !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: @main-blue;
+}
+
+:active, :focus, :hover {
+  outline: 0 none;
+}
+
+// Notifications
+ul.notifications {
+  position: fixed;
+}
+
+// Buttons
+.btn {
+  .transition(.2s, ease-in-out);
+}
+.btn-primary {
+  background: @main-blue;
+  border: 1px solid @main-blue;
+  color: @main-white;
+  .transition (.2s, ease-in-out);
+  &:active, &.active, &:hover, &:focus {
+    background: lighten(@main-blue, 20%);
+    color: @main-white;
+  }
+}
+.btn-info {
+  background: @main-med-blue;
+  border: 1px solid @main-med-blue;
+  color: @main-white;
+  .transition (.2s, ease-in-out);
+  &:active, &.active, &:hover, &:focus {
+    background: lighten(@main-med-blue, 15%);
+    border: 1px solid lighten(@main-med-blue, 5%);
+    color: @main-white;
+  }
+}
+.btn-success {
+  background: @main-green;
+  border: 1px solid @main-green;
+  color: @main-white;
+  .transition (.2s, ease-in-out);
+  &:active, &.active, &:hover, &:focus {
+    background: lighten(@main-green, 15%);
+    border: 1px solid lighten(@main-green, 5%);
+    color: @main-white;
+  }
+}
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+// Icon
+.icon-right {
+  margin-left: 10px;
+}
+
+.icon-left {
+  margin-right: 10px;
+}
+
+// Modals
+.modal-dialog {
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -57px;
+  position: absolute;
+  top: 50%;
+  .modal-content {
+    background: @main-blue;
+    border-radius: 2px;
+    color: @main-white;
+    .modal-title {
+      color: @main-white;
+    }
+    .bootstrap-datetimepicker-widget {
+      color: @main-blue;
+    }
+    .btn-primary {
+      border: 1px solid @main-white;
+      background-color: transparent;
+      &:active, &:hover, &:focus {
+        background-color: fadeout(@main-white, 80%);;
+      }
+    }
+    button.close {
+      color: @main-white;
+    }
+  }
+}
+
+// Default layout
+body.notfound {
+  background-color: @main-light-blue;
+  .well {
+    background-color: @main-white;
+    border: 0 none;
+    margin-bottom: 45px;
+  }
+  img#logo {
+    display: block;
+    margin: 0 auto 45px;
+    width: 500px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+}
+
+// Welcome
+.links .btn {
+  margin-right: 10px;
+}
+
+// News
+.news-list {
+  .news {
+    background-color: fadeout(@main-med-blue, 80%);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 20px;
+    .title {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .content {
+      color: @sub-user-text;
+      font-size: 16px;
+      white-space: pre-line;
+    }
+    .date {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+}

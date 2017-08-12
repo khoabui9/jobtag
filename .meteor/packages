@@ -1,0 +1,43 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+nemo64:bootstrap
+less@2.7.9
+accounts-password@1.4.0
+iron:router
+
+sacha:spin
+fortawesome:fontawesome
+gfk:notifications
+aldeed:collection2
+mquandalle:bower
+mizzao:autocomplete
+
+rajit:bootstrap3-datepicker
+cfs:standard-packages
+cfs:gridfs
+cfs:filesystem
+lookback:body-class
+raix:ui-dropped-event
+mizzao:bootboxjs
+jabbslad:basic-auth
+email@1.2.3
+alanning:roles
+tap:i18n
+momentjs:moment
+percolate:synced-cron
+tsega:bootstrap3-datetimepicker
+joshowens:shareit
+dburles:google-maps
+alethes:pages
+random@1.0.10
+datariot:ganalytics
+insecure@1.0.7
+
+twbs:bootstrap
+session@1.1.7
+mrt:moment

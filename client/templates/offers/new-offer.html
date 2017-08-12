@@ -1,0 +1,61 @@
+<template name="newOffer">
+  <h1>Nouvelle offre</h1>
+  <form id="new-offer-form" action="action">
+    <div class="form-group">
+      <div class="col-md-12">
+        <h2>Informations principales</h2>
+        <label for="new-offer-title">Titre</label>
+        <input id="new-offer-title" class="form-control" type="text" name="title" placeholder="Titre" />
+        <label for="new-offer-company">Société</label>
+        <input id="new-offer-company" class="form-control" type="text" name="company" placeholder="Société" />
+        <div class="row">
+          <div class="col-md-6">
+            <label for="new-offer-type">Type de contrat</label>
+            <select class="form-control" id="new-offer-type">
+              <option value="internship">Stage</option>
+              <option value="alternating">Alternance</option>
+              <option value="limited">CDD</option>
+              <option value="permanent">CDI</option>
+              <option value="other">Autre</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="new-offer-directory">Dossier</label>
+            <select class="form-control" id="new-offer-directory">
+              <option value="none">- Aucun -</option>
+              {{#each directories}}
+                {{> directorySelect}}
+              {{/each}}
+            </select>
+          </div>
+        </div>
+        <label for="new-offer-source">Source (optionnel)</label>
+        <input id="new-offer-source" class="form-control" type="text" name="source" placeholder="http://example.org/?offre=4546763" />
+      </div>
+      <div class="col-md-12">
+        <h2>Détails</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Date de début <a id="new-offer-begin-asap" class="{{edit}} btn btn-xs btn-primary">Dès que possible</a></label>
+            <input id="new-offer-begin" class="form-control" type="text" name="begin" placeholder="jj/mm/aaaa"/>
+          </div>
+          <div class="col-md-6">
+            <label for="new-offer-rating">Note</label>
+            <div id="new-offer-rating"></div>
+          </div>
+        </div>
+        <label for="new-offer-description">Description</label>
+        <textarea id="new-offer-description" class="form-control" name="description" placeholder="Description globale, compétences requises, travail à effectuer, ..."></textarea>
+        <label for="new-offer-comment">Commentaires</label>
+        <textarea id="new-offer-comment" class="form-control" name="comment" placeholder="Dites ce que vous en pensez..."></textarea>
+      </div>
+    </div>
+    <div class="text-center">
+      <input class="btn btn-success" type="submit" value="Valider" />
+    </div>
+  </form>
+</template>
+
+<template name="directorySelect">
+  <option value="{{_id}}">{{name}}</option>
+</template>

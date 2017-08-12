@@ -1,0 +1,33 @@
+SimpleSchema.messages({
+  required: "[label] est requis",
+  minString: "[label] doit avoir au moins [min] caractères",
+  maxString: "[label] ne peut excéder [max] caractères",
+  minNumber: "[label] doit être supérieur ou égal [min]",
+  maxNumber: "[label] doit être inférieur ou égal [max]",
+  minDate: "[label] ne peut être avant [min]",
+  maxDate: "[label] ne peut être après [max]",
+  badDate: "[label] n'est pas une date valide",
+  minCount: "Vous devez spécifier au moins [minCount] valeurs",
+  maxCount: "Vous ne pouvez pas spécifier plus de [maxCount] valeurs",
+  noDecimal: "[label] doit être un entier",
+  notAllowed: "[value] n'est pas une valeur correcte",
+  expectedString: "[label] doit être une chaîne de caractères",
+  expectedNumber: "[label] doit être un nombre",
+  expectedBoolean: "[label] doit être un booléen",
+  expectedArray: "[label] doit être un tableau de valeur",
+  expectedObject: "[label] doit être un objet",
+  expectedConstructor: "[label] doit être un [type]",
+  regEx: [
+    {msg: "[label] ne correspond pas à l'expression régulière"},
+    {exp: SimpleSchema.RegEx.Email, msg: "[label] doit être une adresse email valide"},
+    {exp: SimpleSchema.RegEx.WeakEmail, msg: "[label] doit être une adresse email valide"},
+    {exp: SimpleSchema.RegEx.Domain, msg: "[label] doit être un domaine valide"},
+    {exp: SimpleSchema.RegEx.WeakDomain, msg: "[label] doit être un domaine valide"},
+    {exp: SimpleSchema.RegEx.IP, msg: "[label] doit être une adresse IPv4 ou IPv6 valide"},
+    {exp: SimpleSchema.RegEx.IPv4, msg: "[label] doit être une adresse IPv4 valide"},
+    {exp: SimpleSchema.RegEx.IPv6, msg: "[label] doit être une adresse IPv6 valide"},
+    {exp: SimpleSchema.RegEx.Url, msg: "[label] doit être un URL valide"},
+    {exp: SimpleSchema.RegEx.Id, msg: "[label] doit être un identifiant alphanumérique valide"}
+  ],
+  keyNotInSchema: "[key] n'est pas une clé valide"
+});

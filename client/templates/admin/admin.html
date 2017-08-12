@@ -1,0 +1,62 @@
+<template name="admin">
+  <h1>Admin</h1>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="news">
+      <h2>News</h2>
+      <form id="admin-news-form" action="action">
+        <div class="form-group">
+          <div class="title">Titre</div>
+          <input id="admin-news-title" class="edit form-control" type="text" name="title" placeholder="Titre"/>
+          <div class="title">Contenu</div>
+          <textarea id="admin-news-content" class="edit form-control" name="content" placeholder="News, nouvelles fonctionnalités, ..."></textarea>
+        </div>
+        <div class="text-center">
+          <input id="admin-news-submit" class="btn btn-success" type="submit" value="Publier" />
+          {{#if edited}}
+          <a id="admin-news-edit-cancel" class="btn btn-danger cancel" href="#">Annuler</a>
+          {{/if}}
+        </div>
+      </form>
+      <hr>
+      <div class="news-list">
+        {{#each news}}
+        {{> adminNews}}
+        {{/each}}
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="beta">
+      <h2>Beta</h2>
+      <div class="info">
+        <span class="title">Clés utilisées</span><span class="value">{{usedKeys}}/{{totalKeys}}</span>
+        <div class="pull-right">
+          <a id="admin-beta-generate" class="btn btn-info" href="#">Générer une clé</a>
+        </div>
+      </div>
+      <hr>
+      <div class="keys">
+        {{#each keys}}
+        <div class="key">{{token}}<span class="actions pull-right"><a id="admin-beta-delete" data-id="{{_id}}" href="#"><i class="fa fa-times"></i></a></span></div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="adminNews">
+  <div class="news">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="title">{{title}}</div>
+      </div>
+      <div class="col-md-3">
+        <div class="actions text-right">
+          <a id="admin-news-edit" href="#"><i class="fa fa-pencil-square-o pull-right"></i></a>
+          <a id="admin-news-delete" href="#"><i class="fa fa-times pull-right"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      {{content}}
+    </div>
+  </div>
+</template>

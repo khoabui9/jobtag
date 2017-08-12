@@ -1,0 +1,35 @@
+<template name="offers">
+  <div class="action-bar">
+    <a id="offer-add" class="btn btn-info" href="/offers/new">
+      <i class="icon-left fa fa-plus"></i>Ajouter une offre
+    </a>
+    <button id="offers-order-type" class="btn btn-default pull-right">{{{offersOrderType}}}</button>
+    <div class="dropdown pull-right">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownOrder" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Classer
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownOrder">
+        {{#each offersOrders}}
+        {{> offersOrder}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <ul class="offers">
+    {{#each offers}}
+    {{> offerItem}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="offerItem">
+  <li class="offer {{#if active}}active{{/if}}">
+    <div class="title">{{title}}</div>
+    <div class="infos"><span class="company">{{company}}</span><span class="location pull-right">{{formattedLocation}}</span></div>
+  </li>
+</template>
+
+<template name="offersOrder">
+  <li><a id="offers-order-{{id}}" class="{{active}}" href="#">{{name}}</a></li>
+</template>

@@ -1,0 +1,444 @@
+/**
+* Offers stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+// Listing
+.action-bar {
+  background-color: @main-white;
+  padding: 15px;
+  .dropdown {
+    .dropdown-menu {
+      > li {
+        > a.active {
+          background-color: @main-med-blue;
+          color: @main-white;
+        }
+      }
+    }
+  }
+}
+
+ul.offers {
+  margin: 0;
+  padding: 0;
+  li.offer {
+    cursor: pointer;
+    list-style: none;
+    overflow: hidden;
+    padding: 10px;
+    .transition(.2s, ease);
+    &:hover {
+      background-color: fadeout(@main-med-blue, 80%);
+    }
+    &.active, &:active, &:focus {
+      background-color: @main-med-blue;
+      color: @main-white;
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .company {
+      font-size: 14px;
+      font-style: italic;
+    }
+    .location i {
+      margin-right: 5px;
+    }
+  }
+}
+
+// New Offer
+#new-offer-form {
+  .form-group {
+    overflow: hidden;
+  }
+  h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  input[type=text], input[type=password], textarea, select {
+    background-color: @main-white;
+    border: 1px solid @main-blue;
+    color: @main-blue;
+    margin-bottom: 10px;
+    .placeholder(fadeout(@main-blue, 25%));
+    &:focus {
+      border-color: lighten(@main-blue, 10%);
+      .box-shadow(inset 0 1px 1px fadeout(#000, 95%), 0 0 8px fadeout(@main-blue, 50%));
+    }
+  }
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  #new-offer-description {
+    min-height: 150px;
+  }
+  input[type=submit] {
+    min-width: 200px;
+  }
+}
+
+// Rating
+#new-offer-rating {
+  padding: 4px 0;
+  i {
+    font-size: 26px;
+  }
+  .cancel {
+    margin-left: 20px;
+  }
+}
+
+// Offer
+#offer {
+  background-color: @main-white;
+  margin: -20px;
+  .main-info {
+    min-height: 200px;
+    padding: 25px;
+    position: relative;
+    &.building {
+      background-image: url('/images/bg/street_building.jpg');
+      background-size: 100% auto;
+      h1, .company, .rating {
+        color: @main-white;
+      }
+    }
+    h1 {
+      margin-top: 0px;
+    }
+    .actions {
+      i {
+        color: fadeout(@main-white, 50%);
+        cursor: pointer;
+        font-size: 36px;
+        .transition(.2s, ease);
+        &:hover, &:focus {
+          color: @main-white;
+        }
+      }
+      #offer-delete {
+        margin-top: -2px;
+        margin-right: 5px;
+      }
+    }
+    .company {
+      font-size: 24px;
+      font-style: italic;
+      font-weight: normal;
+    }
+    .rating {
+      font-size: 24px;
+      .stars {
+        text-align: right;
+      }
+      i {
+        margin-right: 5px;
+      }
+    }
+    .edit {
+      margin-bottom: 15px;
+      &.right {
+        text-align: right;
+      }
+    }
+    .timeline {
+      margin: 20px 0;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      .node {
+        width: 20%;
+        .line {
+          background: @main-white;
+          height: 8px;
+          margin-top: -4px;
+          position: absolute;
+          top: 50%;
+          width: 100%;
+          z-index: 1;
+          &.line-begin {
+            left: 50%;
+          }
+          &.line-end {
+            right: 50%;
+          }
+        }
+        i {
+          color: #808080;
+          z-index: 2;
+          &.fa-inverse {
+            color: @main-white;
+          }
+        }
+        &.node-progress {
+          i {
+            color: @main-med-blue;
+            &.fa-inverse {
+              color: @main-white;
+            }
+          }
+        }
+        &.node-success {
+          i {
+            color: @main-green;
+            &.fa-inverse {
+              color: @main-white;
+            }
+          }
+        }
+        &.node-danger {
+          i {
+            color: @main-red;
+            &.fa-inverse {
+              color: @main-white;
+            }
+          }
+        }
+      }
+    }
+  }
+  .tabs {
+    ul.nav-tabs {
+      border-bottom-color: fadeout(@main-blue, 50%);
+      li {
+        text-align: center;
+        width: 25%;
+        &:first-child {
+          a {
+            border-left: 0;
+          }
+        }
+        &.active {
+          a {
+            font-weight: 500;
+            &:hover {
+              background-color: white;
+            }
+          }
+        }
+        a {
+          border: 1px solid fadeout(@main-blue, 50%);
+          border-bottom-color: transparent;
+          border-radius: 0;
+          border-right: 0;
+          color: @main-blue;
+          font-size: 18px;
+          margin-right: 0;
+          .transition(.2s, ease);
+          &:hover {
+            background-color: fadeout(@main-med-blue, 80%);
+          }
+        }
+      }
+    }
+    .tab-pane {
+      overflow: hidden;
+      padding: 25px;
+      h2 {
+        font-size: 26px;
+        margin-bottom: 25px;
+      }
+      .info {
+        margin-bottom: 10px;
+        .title {
+          font-size: 22px;
+          font-weight: 500;
+          margin-right: 15px;
+        }
+        .value {
+          color: @sub-user-text;
+          font-size: 22px;
+        }
+        .edit {
+          margin-top: 5px;
+          &.right {
+            text-align: right;
+          }
+        }
+      }
+      .description {
+        color: @sub-user-text;
+        font-size: 16px;
+        white-space: pre-wrap;
+      }
+      .comment {
+        background-color: fadeout(@main-med-blue, 80%);
+        border-radius: 4px;
+        color: @sub-user-text;
+        font-size: 16px;
+        font-style: italic;
+        padding: 20px;
+        white-space: pre-wrap;
+      }
+      input[type=text], input[type=password], textarea, select {
+        background-color: @main-white;
+        border: 1px solid @main-blue;
+        color: @main-blue;
+        margin-bottom: 10px;
+        .placeholder(fadeout(@main-blue, 25%));
+        &:focus {
+          border-color: lighten(@main-blue, 10%);
+          .box-shadow(inset 0 1px 1px fadeout(#000, 95%), 0 0 8px fadeout(@main-blue, 50%));
+        }
+      }
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      #offer-edit-description {
+        min-height: 150px;
+      }
+      input[type=submit] {
+        min-width: 200px;
+      }
+      // File Upload
+      .file-upload {
+        padding: 0 20px;
+        h3 {
+          margin-bottom: 20px;
+        }
+        .dropzone {
+          background-color: fadeout(@main-med-blue, 80%);
+          color: fadeout(@main-blue, 60%);
+          min-height: 150px;
+          padding: 36px;
+          text-align: center;
+          width: 100%;
+          .link {
+            border-bottom: 1px solid fadeout(@main-blue, 80%);
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+          }
+          i {
+            font-size: 60px;
+          }
+          a {
+            color: fadeout(@main-blue, 60%);
+            .transition(.2s, ease);
+            &:active, &:focus, &:hover {
+              color: fadeout(@main-blue, 20%);
+              text-decoration: none;
+            }
+            .name {
+              display: block;
+              margin-top: 8px;
+            }
+          }
+        }
+        .btn-file {
+          margin-top: 5px;
+        }
+        .info {
+          color: fadeout(@main-blue, 50%);
+          font-size: 14px;
+          font-style: italic;
+          margin-top: 15px;
+          text-align: center;
+        }
+      }
+      .contacts-actions {
+        margin-bottom: 15px;
+      }
+      #offer-contacts-form {
+        .text-right {
+          .title {
+            margin-right: 0;
+          }
+        }
+      }
+      .contacts {
+        margin-top: 35px;
+        .contact {
+          margin-bottom: 40px;
+          &:nth-child(odd) {
+            clear: left;
+            .wrapper {
+              margin-right: 8px;
+            }
+          }
+          &:nth-child(even) {
+            .wrapper {
+              margin-left: 8px;
+            }
+          }
+          .wrapper {
+            background-color: fadeout(@main-med-blue, 80%);
+            padding: 10px;
+          }
+          .info {
+            font-weight: 500;
+            font-size: 18px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            &.basic, &.more {
+              font-weight: normal;
+            }
+            &.more {
+              color: fadeout(@main-blue, 25%);
+              font-size: 16px;
+              font-style: italic;
+              white-space: pre-line;
+            }
+            .situation {
+              font-weight: 500;
+            }
+            .phone, .email {
+              font-weight: normal;
+            }
+          }
+          .actions {
+            a {
+              color: fadeout(@main-blue, 25%);
+              float: right;
+              .transition(.2s, ease);
+              &:active, &:focus, &:hover {
+                color: @main-blue;
+              }
+            }
+            #offer-contacts-delete {
+              display: inline-block;
+              margin-top: -1px;
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#offer.edited {
+  #offer-edit-cancel {
+    color: fadeout(@main-red, 50%);
+    .transition(.2s, ease);
+    &:hover, &:focus {
+      color: @main-red;
+    }
+  }
+  #offer-edit-validate {
+    color: fadeout(@main-green, 50%);
+    .transition(.2s, ease);
+    &:hover, &:focus {
+      color: @main-green;
+    }
+  }
+  .tab-pane .info .title {
+    margin-right: 0;
+  }
+}
+@media (min-width: 768px) {
+  #offer {
+    margin-right: -40px;
+    margin-left: -40px;
+  }
+}
+
+#new-offer-begin-asap, #offer-edit-begin-asap {
+  margin-left: 8px;
+}

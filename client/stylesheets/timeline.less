@@ -1,0 +1,71 @@
+/**
+* Timeline stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+// Badges colors
+.timeline > li > .timeline-badge {
+  &.info {
+    background-color: @main-med-blue;
+  }
+  &.primary {
+    background-color: @main-blue;
+  }
+  &.success {
+    background-color: @main-green;
+  }
+  &.danger {
+    background-color: @main-red;
+  }
+}
+
+// Header
+.timeline-header {
+  color: @main-white;
+  margin: 20px 25% 0;
+  overflow: hidden;
+  width: 50%;
+  > .timeline-panel {
+    background: @main-green;
+    border: 0 none;
+    border-radius: 6px;
+    .box-shadow(0 1px 6px rgba(0, 0, 0, 0.175));
+    padding: 20px;
+    position: relative;
+    h4 {
+      line-height: 22px;
+      margin-bottom: 0;
+    }
+    .timeline-body {
+      margin-top: 20px;
+    }
+    .btn-default {
+      background-color: @main-white;
+      border-color: darken(@main-white, 20%);
+      &:active, &:focus, &:hover {
+        background-color: fadeout(@main-white, 25%);
+        border-color: fadeout(darken(@main-white, 20%), 20%);
+      }
+    }
+  }
+}
+
+// Panel
+.timeline {
+  padding-top: 40px;
+  .timeline-panel {
+    i {
+      margin-right: 10px;
+    }
+    .timeline-title {
+      line-height: 22px;
+    }
+    .timeline-body {
+      .date {
+        font-size: 16px;
+      }
+    }
+  }
+}

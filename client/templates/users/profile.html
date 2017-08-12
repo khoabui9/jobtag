@@ -1,0 +1,62 @@
+<template name="profile">
+  <div id="profile" class="{{edited}}">
+    <div class="row main-info">
+      <div class="col-md-9">
+        <h1>Profil</h1>
+      </div>
+      <div class="col-md-3">
+        <div class="actions text-right">
+          <i id="profile-edit" class="fa fa-pencil-square-o pull-right {{hideEdit}}"></i>
+          <i id="profile-edit-validate" class="fa fa-check pull-right {{edit}}"></i>
+          <i id="profile-edit-cancel" class="fa fa-times pull-right {{edit}}"></i>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="info">
+          <span class="title">Prénom</span>
+          <span class="value {{hideEdit}}">{{profile.firstName}}</span>
+          <input id="profile-edit-firstName" class="edit {{edit}} form-control" type="text" name="firstName" placeholder="Prénom" value="{{profile.firstName}}"/>
+        </div>
+      </div>
+      <div class="col-md-6 text-right">
+        <div class="info">
+          <span class="title">Nom</span>
+          <span class="value {{hideEdit}}">{{profile.lastName}}</span>
+          <input id="profile-edit-lastName" class="edit {{edit}} right form-control" type="text" name="lastName" placeholder="Nom" value="{{profile.lastName}}"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="info">
+          <span class="title">Email</span>
+          <span class="value {{hideEdit}}">{{email}}</span>
+          {{#if emailWaiting}}
+          <div class="new-email {{edit}}">
+            <span class="waiting value">{{emailWaiting}}</span>
+            <span class="actions">
+              <a id="profile-edit-email-resend" class="btn btn-xs btn-info" href="#"><i class="fa fa-refresh"></i></a>
+              <a id="profile-edit-email-delete" class="btn btn-xs btn-danger" href="#"><i class="fa fa-times"></i></a>
+            </span>
+          </div>
+          {{/if}}
+          <input id="profile-edit-email" class="edit {{edit}} {{#if emailWaiting}}{{hideEdit}}{{/if}} form-control" type="text" name="email" placeholder="Email" value="{{email}}"/>
+        </div>
+      </div>
+    </div>
+    <div class="row {{edit}}">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="info password">
+          <span class="title">Ancien mot de passe</span>
+          <input id="profile-edit-password-old" class="edit {{edit}} form-control" type="password" name="password-old" placeholder="Ancien mot de passe"/>
+          <span class="title">Nouveau mot de passe</span>
+          <input id="profile-edit-password-new" class="edit {{edit}} form-control" type="password" name="password-new" placeholder="Nouveau mot de passe"/>
+          <span class="title">Confirmation du mot de passe</span>
+          <input id="profile-edit-password-repeat" class="edit {{edit}} form-control" type="password" name="password-repeat" placeholder="Confirmation du mot de passe"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

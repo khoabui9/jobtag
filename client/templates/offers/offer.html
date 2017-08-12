@@ -1,0 +1,321 @@
+<template name="offer">
+  <div id="offer" class="{{edited}}">
+    <div class="main-info building">
+      <div class="row">
+        <div class="col-md-9">
+          <h1 class="{{hideEdit}}">{{offer.title}}</h1>
+          <input id="offer-edit-title" class="{{edit}} edit form-control" type="text" name="title" placeholder="Titre" value="{{offer.title}}" />
+        </div>
+        <div class="col-md-3">
+          <span class="actions text-right">
+            <i id="offer-edit" class="fa fa-pencil-square-o pull-right {{hideEdit}}"></i>
+            <i id="offer-delete" class="fa fa-trash-o pull-right {{hideEdit}}"></i>
+            <i id="offer-edit-validate" class="fa fa-check pull-right {{edit}}"></i>
+            <i id="offer-edit-cancel" class="fa fa-times pull-right {{edit}}"></i>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <span class="{{hideEdit}} company">{{offer.company}}</span>
+          <input id="offer-edit-company" class="{{edit}} edit form-control" type="text" name="company" placeholder="Société" value="{{offer.company}}" />
+        </div>
+        <div class="col-md-3">
+          <span class="rating pull-right"><div class="stars {{hideEdit}}">{{{starify offer.rating}}}</div><div id="offer-edit-rating" class="{{edit}}" data-score="{{offer.rating}}"></div></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="timeline">
+          <div class="node node-success col-md-2">
+            <div class="line line-begin"></div>
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-floppy-o fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+          <div class="node {{timelineStep 'sent'}} col-md-2">
+            <div class="line"></div>
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-paper-plane fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+          <div class="node {{timelineStep 'wait'}} col-md-2">
+            <div class="line"></div>
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-refresh fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+          <div class="node {{timelineStep 'interview'}} col-md-2">
+            <div class="line"></div>
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+          <div class="node {{timelineStep 'done'}} col-md-2">
+            <div class="line line-end"></div>
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tabs" role="tabpanel">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+        <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Documents</a></li>
+        <li role="presentation"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab">Timeline</a></li>
+        <li role="presentation"><a href="#contact" aria-controls="contact" role="tab" data-toggle="tab">Contacts</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="description">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="info">
+                <span class="title">Type de contrat</span>
+                <span class="value {{hideEdit}}">{{offer.type}}</span>
+                <select class="edit {{edit}} form-control" id="offer-edit-type">
+                  <option value="internship">Stage</option>
+                  <option value="alternating">Alternance</option>
+                  <option value="limited">CDD</option>
+                  <option value="permanent">CDI</option>
+                  <option value="other">Autre</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="info">
+                <span class="title">Date de début <a id="offer-edit-begin-asap" class="{{edit}} btn btn-xs btn-primary">Dès que possible</a></span>
+                <span class="value {{hideEdit}}">{{existing offerBegin}}</span>
+                <input id="offer-edit-begin" class="edit {{edit}} right form-control" type="text" name="begin" placeholder="jj/mm/aaaa" value="{{offer.beginDate}}"/>
+              </div>
+            </div>
+          </div>
+          <div class="row {{hideEdit}}">
+            <div class="col-md-6">
+              <div class="info">
+                <span class="title">Localisation</span>
+                <span class="value">{{#if offer.location}}{{#if offer.location.city}}{{offer.location.city}}, {{/if}}{{offer.location.country}}{{else}}NC{{/if}}</span>
+              </div>
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="info">
+                <span class="value text-center">
+                  {{#if offer.source}}
+                  <a class="btn btn-info" href="{{offer.source}}" target="_blank">Voir l'offre</a>
+                  {{else}}
+                  <a class="btn btn-default" disabled="disabled" href="#">Pas de lien</a>
+                  {{/if}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row {{edit}} localisation">
+            <div class="col-md-6">
+              <div class="info">
+                <span class="title">Dossier</span>
+                <select class=" edit form-control" id="offer-edit-directory">
+                  <option value="none">- Aucun -</option>
+                  {{#each directories}}
+                  {{> directorySelect}}
+                  {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="info">
+                <span class="title {{edit}}">Lien de l'offre</span>
+                <input id="offer-edit-source" class="edit right {{edit}} form-control" type="text" name="source" placeholder="http://example.org/?offre=4546763" value="{{offer.source}}"/>
+              </div>
+            </div>
+          </div>
+          <div class="row {{edit}} localisation">
+            <div class="col-md-12">
+              <div class="info">
+                <span class="title">Localisation</span>
+                <input id="offer-edit-location" class="edit form-control" type="text" name="location" value="{{offer.location.fullAddress}}" placeholder="Localisation"/>
+              </div>
+            </div>
+          </div>
+          <h2 class="{{edit}}">Description</h2>
+          <p class="description {{hideEdit}}">{{offer.description}}</p>
+          <textarea id="offer-edit-description" class="{{edit}} form-control" name="description" placeholder="Description globale, compétences requises, travail à effectuer, ...">{{offer.description}}</textarea>
+          <h2>Commentaires</h2>
+          <div class="col-md-12">
+            {{#if offer.comment}}
+            <p class="comment {{hideEdit}}">{{offer.comment}}</p>
+            {{else}}
+            <p class="text-center comment {{hideEdit}}">Pas de commentaire...</p>
+            {{/if}}
+            <textarea id="offer-edit-comment" class="{{edit}} form-control" name="comment" placeholder="Dites ce que vous en pensez...">{{offer.comment}}</textarea>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="documents">
+          <div class="row">
+            <div id="offer-resume" class="col-md-6 file-upload">
+              <h3>CV</h3>
+              <div id="offer-resume-dropzone" class="dropzone">
+                {{#with offer.documents.resume}}
+                {{#unless isUploaded}}
+                <div class="link">
+                  <i class="spinner fa fa-refresh fa-spin"></i>
+                </div>
+                {{else}}
+                {{#unless hasStored 'resumeStore'}}
+                <div class="link">
+                  <i class="spinner fa fa-refresh fa-spin"></i>
+                </div>
+                {{else}}
+                <div class="link">
+                  <a target="_blank" href="{{offer.documents.resume.url}}">
+                    <i class="fa fa-download"></i>
+                    <span class="name">{{offer.documents.resume.name}}</span>
+                  </a>
+                </div>
+                {{/unless}}
+                {{/unless}}
+                {{/with}}
+                <div class="upload">
+                  <i class="fa fa-cloud-upload"></i><br>
+                  Glissez votre fichier...<br>
+                  ou<br>
+                  <span class="btn btn-default btn-sm btn-file">
+                    Sélectionner votre fichier...<input id="offer-resume-input" type="file"/>
+                  </span>
+                </div>
+                <div class="info">Taille maximale : 2,5Mo<br>Format autorisé : PDF</div>
+              </div>
+            </div>
+            <div id="offer-covering" class="col-md-6 file-upload">
+              <h3>Lettre de motivation</h3>
+              <div id="offer-covering-dropzone" class="dropzone">
+                {{#with offer.documents.coveringLetter}}
+                {{#unless isUploaded}}
+                <div class="link">
+                  <i class="spinner fa fa-refresh fa-spin"></i>
+                </div>
+                {{else}}
+                {{#unless hasStored 'coveringLetterStore'}}
+                <div class="link">
+                  <i class="spinner fa fa-refresh fa-spin"></i>
+                </div>
+                {{else}}
+                <div class="link">
+                  <a target="_blank" href="{{offer.documents.coveringLetter.url}}">
+                    <i class="fa fa-download"></i>
+                    <span class="name">{{offer.documents.coveringLetter.name}}</span>
+                  </a>
+                </div>
+                {{/unless}}
+                {{/unless}}
+                {{/with}}
+                <div class="upload">
+                  <i class="fa fa-cloud-upload"></i><br>
+                  Glissez votre fichier...<br>
+                  ou<br>
+                  <span class="btn btn-default btn-sm btn-file">
+                    Sélectionner votre fichier...<input id="offer-covering-input" type="file"/>
+                  </span>
+                </div>
+                <div class="info">Taille maximale : 2,5Mo<br>Format autorisé : PDF</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="timeline">
+          {{> timeline}}
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="contact">
+          {{#if contactsEdited}}
+          <div class="contacts-actions">
+            <a id="offer-contacts-cancel" class="btn btn-danger"><i class="fa fa-times"></i></a>
+            <a id="offer-contacts-validate" class="btn btn-success"><i class="fa fa-check"></i></a>
+          </div>
+          <form id="offer-contacts-form" action="action">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="info">
+                  <span class="title">Nom</span>
+                  <input id="offer-contacts-name" class="edit form-control" type="text" name="name" placeholder="Name" value="{{contactsEdited.name}}"/>
+                </div>
+              </div>
+              <div class="col-md-6 text-right">
+                <div class="info">
+                  <span class="title">Poste</span>
+                  <input id="offer-contacts-situation" class="edit right form-control" type="text" name="situation" placeholder="Poste" value="{{contactsEdited.situation}}"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="info">
+                  <span class="title">Téléphone</span>
+                  <input id="offer-contacts-phone" class="edit form-control" type="text" name="phone" placeholder="Téléphone" value="{{contactsEdited.phone}}"/>
+                </div>
+              </div>
+              <div class="col-md-6 text-right">
+                <div class="info">
+                  <span class="title">Email</span>
+                  <input id="offer-contacts-email" class="edit right form-control" type="text" name="email" placeholder="Email" value="{{contactsEdited.email}}"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info">
+                  <span class="title">Informations complémentaires</span>
+                  <textarea id="offer-contacts-information" class="edit form-control" type="text" name="information" placeholder="Informations complémentaires" value="{{contactsEdited.information}}"></textarea>
+                </div>
+              </div>
+            </div>
+          </form>
+          <hr>
+          {{else}}
+          <div class="contacts-actions">
+            <a id="offer-contacts-add" class="btn btn-info">
+              <i class="icon-left fa fa-user"></i>Ajouter un contact
+            </a>
+          </div>
+          {{/if}}
+          <div class="contacts">
+            {{#each contacts}}
+            <div class="contact col-md-6" data-id="{{id}}">
+              <div class="wrapper">
+                <div class="info basic">
+                  {{#if name}}
+                  <span class="name">{{name}}, </span>
+                  {{/if}}
+                  <span class="situation">{{situation}}</span>
+                  <span class="actions">
+                    <a id="offer-contacts-delete" href="#" data-id="{{id}}"><i class="fa fa-trash-o"></i></a>
+                    <a id="offer-contacts-edit" href="#" data-id="{{id}}"><i class="fa fa-edit"></i></a>
+                  </span>
+                </div>
+                {{#if phone}}
+                <div class="info">
+                  Téléphone : <span class="phone">{{phone}}</span>
+                </div>
+                {{/if}}
+                {{#if email}}
+                <div class="info">
+                  Email : <span class="email">{{email}}</span>
+                </div>
+                {{/if}}
+                {{#if information}}
+                <div class="info more">
+                  {{information}}
+                </div>
+                {{/if}}
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

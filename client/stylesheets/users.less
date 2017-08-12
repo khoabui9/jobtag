@@ -1,0 +1,96 @@
+/**
+* Users stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+#profile {
+  background-color: @main-white;
+  &.edited {
+    .info .title {
+      margin-right: 0;
+    }
+  }
+  .main-info {
+    margin-bottom: 30px;
+    .actions {
+      margin-top: 20px;
+      i {
+        color: fadeout(@main-blue, 50%);
+        cursor: pointer;
+        font-size: 36px;
+        .transition(.2s, ease);
+        &:hover, &:focus {
+          color: @main-blue;
+        }
+      }
+      #profile-edit-cancel {
+        color: fadeout(@main-red, 50%);
+        .transition(.2s, ease);
+        &:hover, &:focus {
+          color: @main-red;
+        }
+      }
+      #profile-edit-validate {
+        color: fadeout(@main-green, 50%);
+        .transition(.2s, ease);
+        &:hover, &:focus {
+          color: @main-green;
+        }
+      }
+    }
+  }
+  .info {
+    margin-bottom: 10px;
+    .title {
+      font-size: 22px;
+      font-weight: 500;
+      margin-right: 15px;
+    }
+    .value {
+      color: @sub-user-text;
+      font-size: 22px;
+    }
+    .edit {
+      margin-top: 5px;
+      &.right {
+        text-align: right;
+      }
+    }
+  }
+  input[type=text], input[type=password], textarea, select {
+    background-color: @main-white;
+    border: 1px solid @main-blue;
+    color: @main-blue;
+    margin-bottom: 10px;
+    .placeholder(fadeout(@main-blue, 25%));
+    &:focus {
+      border-color: lighten(@main-blue, 10%);
+      .box-shadow(inset 0 1px 1px fadeout(#000, 95%), 0 0 8px fadeout(@main-blue, 50%));
+    }
+  }
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  #offer-edit-description {
+    min-height: 150px;
+  }
+  .new-email {
+    .waiting, .actions {
+      float: left;
+      display: inline-block;
+    }
+    .actions {
+      margin-left: 10px;
+      margin-top: 5px;
+    }
+  }
+  .password {
+    background-color: fadeout(@main-med-blue, 80%);
+    border-radius: 12px;
+    margin-top: 30px;
+    padding: 20px;
+  }
+}

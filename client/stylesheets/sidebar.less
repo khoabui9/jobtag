@@ -1,0 +1,132 @@
+/**
+* Sidebar stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+.sidebar {
+  .sidebar-form {
+    margin-bottom: 20px;
+  }
+}
+
+.sidebar-default {
+  background-color: @main-blue;
+  .sidebar-form {
+    a.input-group-addon {
+      background: @main-blue;
+      border-bottom: 1px solid lighten(@main-blue, 50%);
+      border-right: 1px solid lighten(@main-blue, 50%);
+      border-top: 1px solid lighten(@main-blue, 50%);
+      color: @main-white;
+      .transition (.2s, ease-in-out);
+      &:active, &:focus, &:hover {
+        background: lighten(@main-blue, 20%);
+      }
+    }
+    input {
+      background-color: lighten(@main-blue, 10%);
+      border: 1px solid lighten(@main-blue, 50%);
+      color: @main-white;
+      .placeholder(fadeout(@main-white, 10%));
+      &:focus {
+        border-color: lighten(@main-blue, 60%);
+        .box-shadow(inset 0 1px 1px fadeout(#000, 95%), 0 0 8px fadeout(@main-white, 50%));
+      }
+    }
+  }
+  ul {
+    li {
+      font-size: 16px;
+      i.icon-left {
+        display: block;
+        float: left;
+        font-size: 20px;
+      }
+      a {
+        overflow: hidden;
+        .text {
+          display: block;
+          float: left;
+          margin-top: -2px;
+        }
+      }
+      form {
+        margin-bottom: 3px;
+        margin-top: 3px;
+        input[type=text] {
+          background-color: lighten(@main-blue, 10%);
+          border: 1px solid lighten(@main-blue, 50%);
+          color: @main-white;
+          .placeholder(fadeout(@main-white, 10%));
+          &:focus {
+            border-color: lighten(@main-blue, 60%);
+            .box-shadow(inset 0 1px 1px fadeout(#000, 95%), 0 0 8px fadeout(@main-white, 50%));
+          }
+          width: 100%;
+        }
+        a.input-group-addon {
+          background: @main-blue;
+          border-bottom: 1px solid lighten(@main-blue, 50%);
+          border-right: 1px solid lighten(@main-blue, 50%);
+          border-top: 1px solid lighten(@main-blue, 50%);
+          color: @main-white;
+          .transition (.2s, ease-in-out);
+          &:active, &:focus, &:hover {
+            background: lighten(@main-blue, 20%);
+          }
+          width: 1% !important;
+        }
+      }
+      &.active {
+        > a {
+          background-color: @main-white;
+          color: @main-blue;
+          &:focus, &:hover {
+            background-color: @main-white;
+            color: @main-blue;
+          }
+        }
+        .actions {
+          a {
+            color: fadeout(@main-blue, 50%);
+            &:hover {
+              color: @main-blue;
+            }
+          }
+        }
+      }
+      > a {
+        .transition(.2s, ease);
+        color: @main-white;
+        &:hover {
+          background: fadeout(@main-white, 80%);
+        }
+      }
+      .actions {
+        a {
+          color: fadeout(@main-white, 50%);
+          &:hover {
+            color: @main-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebar-offers {
+  background-color: @main-light-blue;
+  border-right: 0 none;
+  padding: 0;
+}
+
+.nav-sidebar {
+  .actions {
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: -2px;
+  }
+}

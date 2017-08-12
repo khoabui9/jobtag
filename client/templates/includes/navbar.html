@@ -1,0 +1,51 @@
+<template name="navbar">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><img src="/images/logo_nav.png" alt=""></a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <form id="navbar-search-form" action="action" class="navbar-form navbar-left">
+          <div class="{{#if search}}input-group{{/if}}">
+            <input id="navbar-search" type="text" name="search" value="{{search}}" class="form-control" placeholder="Rechercher...">
+            {{#if search}}
+            <span class="input-group-btn">
+              <button id="navbar-search-cancel" class="btn btn-danger" type="button"><i class="fa fa-times"></i></button>
+            </span>
+            {{/if}}
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{currentUser.profile.firstName}} {{currentUser.profile.lastName}} <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/profile">Profil</a></li>
+              <li><a id="navbar-menu-archives" href="#">Archives</a></li>
+              {{#if isInRole 'admin'}}
+              <li><a href="/admin">Admin</a></li>
+              {{/if}}
+              <li class="divider"></li>
+              <li><a id="disconnect" href="#">Se déconnecter</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div id="bug-report" class="nav navbar-nav navbar-right bug">
+          <a href="#" id="bug-report-button" class="btn btn-info"><i class="fa fa-bug"></i> Un bug ?</a>
+          <div class="popover-content-template hide" data-for="bug-button">
+            <form action="action">
+              <input class="form-control" type="text" name="title" placeholder="Titre"/>
+              <textarea class="form-control" name="content" placeholder="Description du bug"></textarea>
+              <input type="submit" class="btn btn-success" value="Envoyer">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</template>

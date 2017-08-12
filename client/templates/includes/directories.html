@@ -1,0 +1,39 @@
+<template name="directories">
+  <form id="directory-add-form" class="sidebar-form">
+    <div class="input-group">
+      <input id="directory-add-name" type="text" class="form-control" placeholder="Ajouter un dossier">
+      <a href="#" class="input-group-addon" id="directory-add-submit"><i class="fa fa-plus"></i></a>
+    </div>
+  </form>
+  <ul class="nav nav-sidebar">
+    <li class="{{#if allOffers}}active{{/if}}"><a class="name all-offers" href="#"><i class="icon-left fa {{#if allOffers}}fa-folder-open{{else}}fa-folder{{/if}}"></i><span class="text">Toutes les offres</span></a></li>
+    {{#if search}}
+    <li class="active"><a class="name search" href="#"><i class="icon-left fa fa-search"></i><span class="text">{{search}}</span></a></li>
+    {{/if}}
+    {{#if archives}}
+    <li class="active"><a class="name archives" href="#"><i class="icon-left fa fa-archive"></i><span class="text">Archives</span></a></li>
+    {{/if}}
+    {{#each directories}}
+    {{> directory}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="directory">
+  <li class="{{#if selected}}active{{/if}}">
+    {{#if edited}}
+    <form id="directory-rename-form" class="navbar-form">
+      <div class="input-group">
+        <input id="directory-rename-name" type="text" class="form-control" placeholder="Renommer ce dossier" value="{{name}}">
+        <a href="#" class="input-group-addon" id="directory-rename-submit"><i class="fa fa-check"></i></a>
+      </div>
+    </form>
+    {{else}}
+    <a class="name" href="#"><i class="icon-left fa {{#if selected}}fa-folder-open{{else}}fa-folder{{/if}}"></i><span class="text">{{name}}</span></a>
+    <span class="actions">
+      <a class="edit" href="#"><i class="fa fa-pencil"></i></a>
+      <a class="delete" href="#"><i class="fa fa-times"></i></a>
+    </span>
+    {{/if}}
+  </li>
+</template>

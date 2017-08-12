@@ -1,0 +1,81 @@
+/**
+* Auth stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+// General
+body.authlayout {
+  a {
+    color: @main-blue;
+    .transition(ease, .2s);
+    &:active, &:focus, &:hover {
+      color: @main-med-blue;
+      text-decoration: none;
+    }
+  }
+  a.btn {
+    color: @main-white;
+    &:active, &:focus, &:hover {
+      color: @main-white;
+    }
+  }
+  .links {
+    margin-top: 15px;
+  }
+  background-color: @main-light-blue;
+  .well {
+    background-color: @main-white;
+    border: 0 none;
+    margin-bottom: 45px;
+  }
+  img#logo {
+    display: block;
+    margin: 0 auto 45px;
+    width: 500px;
+  }
+  h1 {
+    margin-bottom: 20px;
+  }
+  input[type=text], input[type=password], input[type=email], textarea {
+    background-color: @main-white;
+    border: 1px solid @main-blue;
+    color: @main-blue;
+    margin-bottom: 10px;
+    .placeholder(fadeout(@main-blue, 25%));
+    &:focus {
+      border-color: lighten(@main-blue, 10%);
+      .box-shadow(inset 0 1px 1px fadeout(#000, 95%), 0 0 8px fadeout(@main-blue, 50%));
+    }
+  }
+  .popover {
+    background-color: @main-blue;
+    border: 1px solid lighten(@main-blue, 30%);
+    color: @main-white;
+    > .arrow {
+      border-right-color: lighten(@main-blue, 30%);
+    }
+    > .arrow::after {
+      border-right-color: @main-blue;
+    }
+  }
+  .copyright {
+    font-size: 16px;
+    font-style: italic;
+  }
+}
+
+// Buttons
+.btn-linkedin {
+  background: #0077B5;
+  color: #fff;
+  .transition(.2s, ease-in-out);
+  &:active, &:hover {
+    background: #008ecb;
+    color: #fff;
+  }
+  i {
+    margin-right: 10px;
+  }
+}

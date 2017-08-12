@@ -1,0 +1,33 @@
+<template name="home">
+  <h1>{{_ "welcome"}}</h1>
+  <p>Merci d'utiliser JobTag, voici quelques liens pour bien commencer.</p>
+  <p class="links">
+    <a class="btn btn-info" href="/faq">FAQ</a>
+    <a class="btn btn-info" href="/faq-beta">FAQ Bêta</a>
+  </p>
+  <p>Pour installer le marque page glissez le bouton ci-dessous dans votre barre de favoris. Si votre barre de favoris ne s'affiche pas faites la manipulation suivante : &#8679; + (ctrl ou &#8984;) + B.</p>
+  <p class="links">
+    <a class="btn btn-primary" href="
+    javascript: (function () {
+      if (document.getElementById('jobtag-bm'))
+      return;
+      var jsCode = document.createElement('script');
+      jsCode.setAttribute('src', 'http://static.jobtag.fr/bookmarklet/app.min.js');
+      document.body.appendChild(jsCode);
+    }());
+    ">Taguer une offre</a>
+  </p>
+  <hr>
+  <h2>News</h2>
+  <div class="news-list">
+    {{#each news}}
+    <div class="news">
+      <div class="title">{{title}}</div>
+      <div class="content">
+        {{content}}
+      </div>
+      <div class="date text-right">le {{formatDateTime createdAt}}</div>
+    </div>
+    {{/each}}
+  </div>
+</template>

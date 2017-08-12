@@ -1,0 +1,111 @@
+<template name="auth">
+  <div class="well col-md-8 col-md-offset-2">
+   {{> login}}
+   {{> register}}
+  </div>
+</template>
+
+<template name="authVerify">
+  <div class="well col-md-8 col-md-offset-2">
+    <div class="col-md-12">
+      <h1>Envoyer un email de vérification</h1>
+      <form id="verify-form" action="action">
+        <div class="form-group">
+          <input id="verify-email" class="form-control" type="email" name="email" placeholder="Email" />
+        </div>
+        <div class="text-center">
+          <input class="btn btn-success" type="submit" value="Envoyer" />
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template name="authReset">
+  <div class="well col-md-8 col-md-offset-2">
+    <div class="col-md-12">
+      {{#if token}}
+      <h1>Choisir un nouveau mot de passe</h1>
+      <form id="reset-password-form" action="action">
+        <div class="form-group">
+          <input id="reset-password-new" class="form-control" type="password" name="password-new" placeholder="Mot de passe" />
+          <input id="reset-password-repeat" class="form-control" type="password" name="password-repeat" placeholder="Confirmation" />
+        </div>
+        <div class="text-center">
+          <input class="btn btn-success" type="submit" value="Envoyer" />
+        </div>
+      </form>
+      {{else}}
+      <h1>Envoyer un email de changement de mot de passe</h1>
+      <form id="reset-email-form" action="action">
+        <div class="form-group">
+          <input id="reset-email" class="form-control" type="email" name="email" placeholder="Email" />
+        </div>
+        <div class="text-center">
+          <input class="btn btn-success" type="submit" value="Envoyer" />
+        </div>
+      </form>
+      {{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="authBeta">
+  <div class="well col-md-8 col-md-offset-2">
+    <div class="col-md-12">
+      <h1>Clef bêta</h1>
+      <form id="beta-form" action="action">
+        <div class="form-group">
+          <input id="beta-key" class="form-control" type="text" name="key" placeholder="Clef bêta" />
+        </div>
+        <div class="text-center">
+          <input class="btn btn-success" type="submit" value="Envoyer" />
+          <a id="beta-disconnect" class="btn btn-primary" href="#">Se deconnecter</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template name="login">
+   <div class="col-md-6">
+      <h1>Connexion</h1>
+      <form id="login-form" action="action">
+        <div class="form-group">
+          <input id="login-email" class="form-control" type="text" name="email" placeholder="Nom d'utilisateur ou Email" />
+          <input id="login-password" class="form-control" type="password" name="password" placeholder="Mot de passe" />
+        </div>
+        <div class="text-center">
+          <input class="btn btn-primary" type="submit" value="Se connecter" />
+        </div>
+        <div class="text-center links">
+          <a href="/auth/verify">Besoin d'un mail de vérification ?</a><br>
+          <a href="/auth/reset">Mot de passe oublié ?</a>
+        </div>
+      </form>
+    </div>
+</template>
+
+<template name="register">
+   <div class="col-md-6">
+      <h1>Inscription</h1>
+      <form id="register-form" action="action">
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-6">
+              <input id="register-firstname" class="form-control" type="text" name="firstname" placeholder="Prénom" data-toggle="popover" data-content="De 2 à 32 caractères." />
+            </div>
+            <div class="col-md-6">
+              <input id="register-lastname" class="form-control" type="text" name="lastname" placeholder="Nom" data-toggle="popover" data-content="De 2 à 32 caractères." />
+            </div>
+          </div>
+          <input id="register-username" class="form-control" type="text" name="username" placeholder="Nom d'utilisateur" data-toggle="popover" data-content="Minuscules et chiffres uniquement, de 3 à 24 caractères." />
+          <input id="register-email" class="form-control" type="text" name="email" placeholder="Email" />
+          <input id="register-password" class="form-control" type="password" name="password" placeholder="Mot de passe" />
+        </div>
+        <div class="text-center">
+          <input class="btn btn-primary" type="submit" value="S'inscrire" />
+        </div>
+      </form>
+    </div>
+</template>
