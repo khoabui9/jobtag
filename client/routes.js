@@ -69,7 +69,7 @@ Meteor.startup(function () {
 
   // - Before routing login check
   Router.onBeforeAction(requireLogin, {except: ['auth', 'auth.verify', 'auth.reset']});
-  Router.onBeforeAction(alreadyLoggedIn, {only: ['auth', 'auth.reset']});
+  Router.onBeforeAction(alreadyLoggedIn, {only: ['home','auth', 'auth.reset']});
 
   // - Before routing beta check
   Router.onBeforeAction(checkBeta, {except: ['auth', 'auth.verify', 'auth.reset', 'auth.beta']});
@@ -104,8 +104,7 @@ Meteor.startup(function () {
   });
 
   // - Home
-  Router.route('/', { name: 'home', layoutTemplate: 'appLayout' });
-
+  Router.route('/', { name: 'home',template: 'home' ,layoutTemplate: 'appLayout' });
   // - Auth
   Router.route('/auth', { name: 'auth', template: 'auth', layoutTemplate: 'authLayout' });
   Router.route('/auth/verify', { name: 'auth.verify', template: 'authVerify', layoutTemplate: 'authLayout' });
