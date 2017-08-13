@@ -158,7 +158,7 @@ Template.authBeta.events({
       if (error)
         Notifications.error('Erreur', error.reason);
 
-      Router.go('home');
+      Router.go('auth');
     });
   },
 });
