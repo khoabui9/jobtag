@@ -124,7 +124,7 @@ Template.newOffer.rendered = function () {
     cancelClass: 'cancel'
   });
 
-  $('#new-offer-begin').datepicker({
+  $('#my-datepicker').datepicker({
     format: "dd/mm/yyyy",
     language: "fr",
     orientation: "top auto"
@@ -157,7 +157,7 @@ Template.newOffer.events({
     var title = t.find('#new-offer-title').value;
     var company = t.find('#new-offer-company').value;
     var type = t.find('#new-offer-type option:selected').value;
-    var rating = /*t.find('#new-offer-rating input').value;*/ 0;
+    var rating = t.find('#new-offer-rating input').value;
     var source = t.find('#new-offer-source').value;
     var directory = t.find('#new-offer-directory option:selected').value;
     var begin = t.find('#new-offer-begin').value;
