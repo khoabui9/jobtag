@@ -250,8 +250,8 @@ function jobInterviewScheduleModal(method, answer) {
     show: false
   });
   dialog.on("shown.bs.modal", function() {
-    $('#job-interview-modal-datetime').datetimepicker({
-      format: "llll",
+    $('#job-interview-modal-datetime').datepicker({
+      format: "dd/mm/yyyy",
       showTodayButton: true,
       locale: "fr"
     });
