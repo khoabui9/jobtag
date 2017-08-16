@@ -70,6 +70,7 @@ Template.offersOrder.events({
 
 Template.offerItem.events({
   'click li': function (e, t) {
+    /*Session.set('directory.selected', this.directoryId);*/
     Router.go('offer', { _id: this._id });
   }
 });
