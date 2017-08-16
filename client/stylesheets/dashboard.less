@@ -1,0 +1,31 @@
+/**
+* Dashboard stylesheet
+*/
+
+@import url('/client/stylesheets/mixins.import.less');
+@import url('/client/stylesheets/colors.import.less');
+
+.hi {
+	padding: 0;
+}
+
+.main-info-dashboard {
+	padding: 0;
+	left: 0;
+} 
+.state {
+	padding: 0;
+	margin-top: 20px;
+	.question {
+		margin-bottom: 20px;
+	}
+	.current-saved {
+		background: #68CBFF; /* For browsers that do not support gradients */        
+		background: -webkit-linear-gradient(-90deg, #9999FF, #68CBFF); /* For Safari 5.1 to 6.0 */
+		background: -o-linear-gradient(-90deg, #9999FF, #68CBFF); /* For Opera 11.1 to 12.0 */
+		background: -moz-linear-gradient(-90deg, #9999FF, #68CBFF); /* For Firefox 3.6 to 15 */
+		background: linear-gradient(-90deg, #9999FF, #68CBFF); /* Standard syntax (must be last) */
+		color: @main-white;
+	 	height: 135px;
+	}
+}
