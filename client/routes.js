@@ -117,6 +117,9 @@ Meteor.startup(function () {
   // - Users
   Router.route('/profile', { name: 'profile', template: 'profile', layoutTemplate: 'appLayout' });
 
+  //Dashboard
+  Router.route('/dashboard', { name: 'dashboard', template: 'dashboard', layoutTemplate: 'appLayout' });
+
   // - Offers
   Router.route('/offers/new', { name: 'offer.new', template: 'newOffer', layoutTemplate: 'appLayout' });
   Router.route('/offers/:_id', { name: 'offer', template: 'offer', layoutTemplate: 'appLayout' });

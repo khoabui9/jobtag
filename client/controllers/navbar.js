@@ -26,6 +26,7 @@ Template.navbar.events({
   'click #navbar-search-cancel': function (e, t) {
     Session.set('search');
     Session.set('directory.selected', 'all-offers');
+    Router.go("dashboard");
   },
   'click #navbar-menu-archives': function (e, t) {
     if (Session.get('archives')) {

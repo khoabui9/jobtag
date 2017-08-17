@@ -6,16 +6,17 @@
     </div>
   </form>
   <ul class="nav nav-sidebar">
-    <li class="{{#if allOffers}}active{{/if}}"><a class="name all-offers" href="#"><i class="icon-left fa {{#if allOffers}}fa-folder-open{{else}}fa-folder{{/if}}"></i><span class="text">Toutes les offres</span></a></li>
     {{#if search}}
-    <li class="active"><a class="name search" href="#"><i class="icon-left fa fa-search"></i><span class="text">{{search}}</span></a></li>
-    {{/if}}
-    {{#if archives}}
-    <li class="active"><a class="name archives" href="#"><i class="icon-left fa fa-archive"></i><span class="text">Archives</span></a></li>
+    <li class="active"><a class="name search" href="#"><i class="icon-left fa fa-search"></i><span class="text">{{search}}</span>
+    </a>
+    </li>
     {{/if}}
     {{#each directories}}
     {{> directory}}
     {{/each}}
+    <hr class="line">
+    <li class="{{#if allOffers}}active{{/if}}"><a class="name all-offers" href="/dashboard"><i class="icon-left fa {{#if allOffers}}fa-folder-open{{else}}fa-folder{{/if}}"></i><span class="text">Toutes les offres</span></a></li>
+    <li><a class="name archives" href="#"><i class="icon-left fa fa-archive"></i><span class="text">Archives</span></a></li>
   </ul>
 </template>
 
