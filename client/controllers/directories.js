@@ -37,6 +37,9 @@ Template.directories.helpers({
   },
   archives: function () {
     return Session.get('archives');
+  },
+  search: function () {
+    return Session.get('search');
   }
 });
 
@@ -70,8 +73,11 @@ Template.directory.events({
   },
   'click .edit': function (e, t) {
     var directory = e.target;
-
     Session.set('directory.edited', this._id);
+  },
+  'click .delete-search': function (e, t) {
+    Session.set('search');
+    Session.set('directory.selected', 'all-offers');
   },
   'click .delete': function (e, t) {
     var directory = e.target;
@@ -88,7 +94,7 @@ Template.directory.events({
         });
       }
     });
-  }
+  },
 });
 
 Template.directory.helpers({
@@ -97,5 +103,5 @@ Template.directory.helpers({
   },
   edited: function () {
     return Session.get('directory.edited') == this._id;
-  }
+  },
 });

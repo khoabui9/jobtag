@@ -5,3 +5,7 @@ Template.registerHelper('formatDate', function(date) {
 Template.registerHelper('formatDateTime', function(date) {
   return moment(date).format('llll');
 });
+
+Template.registerHelper('and', function(a, b) {  
+  return a && b;
+});
