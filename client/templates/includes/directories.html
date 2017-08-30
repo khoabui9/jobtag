@@ -2,7 +2,7 @@
   <form id="directory-add-form" class="sidebar-form">
     <div class="input-group">
       <input id="directory-add-name" type="text" class="form-control" placeholder="Ajouter un dossier">
-      <a href="#" class="input-group-addon" id="directory-add-submit"><i class="fa fa-plus"></i></a>
+      <a href="#" class="input-group-addon dir-add" id="directory-add-submit"><i class="fa fa-plus"></i></a>
     </div>
   </form>
   <ul class="nav nav-sidebar">
@@ -16,7 +16,9 @@
     {{/each}}
     <hr class="line">
     <li class="{{#if allOffers}}active{{/if}}"><a class="name all-offers" href="/dashboard"><i class="icon-left fa {{#if allOffers}}fa-folder-open{{else}}fa-folder{{/if}}"></i><span class="text">Toutes les offres</span></a></li>
-    <li><a class="name archives" href="#"><i class="icon-left fa fa-archive"></i><span class="text">Archives</span></a></li>
+    {{#if archives}}
+    <li class="active"><a class="name archives" href="#"><i class="icon-left fa fa-archive"></i><span class="text">Archives</span></a></li>
+    {{/if}}
   </ul>
 </template>
 
