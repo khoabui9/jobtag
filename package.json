@@ -9,10 +9,7 @@
     "base-64": "^0.1.0",
     "bcrypt": "^1.0.2",
     "bson": "^1.0.4",
-<<<<<<< HEAD
     "bson-ext": "^1.0.5",
-=======
->>>>>>> fix-1
     "meteor-node-stubs": "~0.2.4",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.7",
