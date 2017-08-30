@@ -5,11 +5,13 @@
     "start": "meteor run"
   },
   "dependencies": {
-    "babel-runtime": "^6.20.0",
+    "babel-runtime": "^6.26.0",
     "base-64": "^0.1.0",
     "bcrypt": "^1.0.2",
-    "bson-ext": "^1.0.5",
+    "bson": "^1.0.4",
     "meteor-node-stubs": "~0.2.4",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.7",
     "simpl-schema": "^0.3.2"
   }
 }
