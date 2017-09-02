@@ -11,7 +11,7 @@
     "bson": "^1.0.4",
     "bson-ext": "^1.0.5",
     "meteor-node-stubs": "~0.2.4",
-    "mongodb": "^2.2.31",
+    "mongodb": "^2.2.4",
     "mongoose": "^4.11.7",
     "simpl-schema": "^0.3.2"
   }
