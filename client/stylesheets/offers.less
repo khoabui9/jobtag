@@ -103,8 +103,11 @@ ul.offers {
     padding: 25px;
     position: relative;
     &.building {
-      background-image: url('/images/bg/street_building.jpg');
+      background-image: url('/images/bg/mountain.jpg');
       background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center; 
       h1, .company, .rating {
         color: @main-white;
       }
@@ -156,7 +159,7 @@ ul.offers {
         width: 20%;
         .line {
           background: @main-white;
-          height: 8px;
+          height: 2px;
           margin-top: -4px;
           position: absolute;
           top: 50%;
@@ -178,7 +181,7 @@ ul.offers {
         }
         &.node-progress {
           i {
-            color: @main-med-blue;
+            color: @main-green;
             &.fa-inverse {
               color: @main-white;
             }
@@ -186,7 +189,7 @@ ul.offers {
         }
         &.node-success {
           i {
-            color: @main-green;
+            color: #FF006F;
             &.fa-inverse {
               color: @main-white;
             }
@@ -205,29 +208,26 @@ ul.offers {
   }
   .tabs {
     ul.nav-tabs {
-      border-bottom-color: fadeout(@main-blue, 50%);
       li {
         text-align: center;
         width: 25%;
         &:first-child {
           a {
-            border-left: 0;
           }
         }
         &.active {
           a {
+            background-color: white;
             font-weight: 500;
+            color: #FF006F;
             &:hover {
               background-color: white;
             }
           }
         }
         a {
-          border: 1px solid fadeout(@main-blue, 50%);
-          border-bottom-color: transparent;
-          border-radius: 0;
-          border-right: 0;
-          color: @main-blue;
+          background-color: #2a2c3e;
+          color: white;
           font-size: 18px;
           margin-right: 0;
           .transition(.2s, ease);
